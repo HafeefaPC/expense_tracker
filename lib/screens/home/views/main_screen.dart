@@ -1,8 +1,12 @@
+
 import 'dart:math';
 
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+
+import '../../../data/data.dart';
 
 
 
@@ -51,7 +55,7 @@ class MainScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "John Doe",
+                          "Hafeefa",
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
