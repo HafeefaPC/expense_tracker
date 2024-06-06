@@ -1,17 +1,16 @@
 
 import 'dart:math';
 
-
+import 'package:expense_repository/expense_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:intl/intl.dart';
 
 import '../../../data/data.dart';
 
-
-
 class MainScreen extends StatelessWidget {
- 
+  final List<Expense> expenses;
+  const MainScreen(this.expenses, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +54,7 @@ class MainScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "Hafeefa",
+                          "John Doe",
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -234,7 +233,7 @@ class MainScreen extends StatelessWidget {
             const SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
-                
+                itemCount: expenses.length,
                 itemBuilder: (context, int i) {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
@@ -257,16 +256,20 @@ class MainScreen extends StatelessWidget {
                                       width: 50,
                                       height: 50,
                                       decoration: BoxDecoration(
-                                       
+                                        color: Color(expenses[i].category.color),
                                         shape: BoxShape.circle
                                       ),
                                     ),
-                                    
+                                    Image.asset(
+                                      'assets/${expenses[i].category.icon}.png',
+                                      scale: 2,
+                                      color: Colors.white,
+                                    )
                                   ],
                                 ),
                                 const SizedBox(width: 12),
                                 Text(
-                                  "ohk",
+                                  expenses[i].category.name,
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: Theme.of(context).colorScheme.onBackground,
@@ -279,7 +282,7 @@ class MainScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  "hi",
+                                  "\$${expenses[i].amount}.00",
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: Theme.of(context).colorScheme.onBackground,
@@ -287,7 +290,7 @@ class MainScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  "hello",
+                                  DateFormat('dd/MM/yyyy').format(expenses[i].date),
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: Theme.of(context).colorScheme.outline,
