@@ -1,15 +1,9 @@
 import 'dart:math';
 
-
+import 'package:expensetracker/data/data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-import '../../../data/data.dart';
-
-class MainScreen extends StatelessWidget {
-  final List<Expense> expenses;
-  const MainScreen(this.expenses, {super.key});
 
 
 class MainScreen extends StatelessWidget {
@@ -29,7 +23,7 @@ class MainScreen extends StatelessWidget {
                   children: [
                     Stack(
                       alignment: Alignment.center,
-                      children: [
+                      children: [ 
                         Container(
                           width: 50,
                           height: 50,
@@ -47,7 +41,7 @@ class MainScreen extends StatelessWidget {
                     const SizedBox(width: 8,),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                       children: [
                         Text(
                           "Welcome!",
                           style: TextStyle(
@@ -221,98 +215,95 @@ class MainScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     
-//                   },
-//                   child: Text(
-//                     'View All',
-//                     style: TextStyle(
-//                       fontSize: 14,
-//                       color: Theme.of(context).colorScheme.outline,
-//                       fontWeight: FontWeight.w400
-//                     ),
-//                   ),
-//                 )
-//               ],
-//             ),
-//             const SizedBox(height: 20),
-//             Expanded(
-//               child: ListView.builder(
-//                 itemCount: expenses.length,
-//                 itemBuilder: (context, int i) {
-//                   return Padding(
-//                     padding: const EdgeInsets.only(bottom: 16.0),
-//                     child: Container(
-//                       decoration: BoxDecoration(
-//                         color: Colors.white,
-//                         borderRadius: BorderRadius.circular(12)
-//                       ),
-//                       child: Padding(
-//                         padding: const EdgeInsets.all(16.0),
-//                         child: Row(
-//                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                           children: [
-//                             Row(
-//                               children: [
-//                                 Stack(
-//                                   alignment: Alignment.center,
-//                                   children: [
-//                                     Container(
-//                                       width: 50,
-//                                       height: 50,
-//                                       decoration: BoxDecoration(
-//                                         color: Color(expenses[i].category.color),
-//                                         shape: BoxShape.circle
-//                                       ),
-//                                     ),
-//                                     Image.asset(
-//                                       'assets/${expenses[i].category.icon}.png',
-//                                       scale: 2,
-//                                       color: Colors.white,
-//                                     )
-//                                   ],
-//                                 ),
-//                                 const SizedBox(width: 12),
-//                                 Text(
-//                                   expenses[i].category.name,
-//                                   style: TextStyle(
-//                                     fontSize: 14,
-//                                     color: Theme.of(context).colorScheme.onBackground,
-//                                     fontWeight: FontWeight.w500
-//                                   ),
-//                                 ),
-//                               ],
-//                             ),
-//                             Column(
-//                               crossAxisAlignment: CrossAxisAlignment.end,
-//                               children: [
-//                                 Text(
-//                                   "\$${expenses[i].amount}.00",
-//                                   style: TextStyle(
-//                                     fontSize: 14,
-//                                     color: Theme.of(context).colorScheme.onBackground,
-//                                     fontWeight: FontWeight.w400
-//                                   ),
-//                                 ),
-//                                 Text(
-//                                   DateFormat('dd/MM/yyyy').format(expenses[i].date),
-//                                   style: TextStyle(
-//                                     fontSize: 14,
-//                                     color: Theme.of(context).colorScheme.outline,
-//                                     fontWeight: FontWeight.w400
-//                                   ),
-//                                 ),
-//                               ],
-//                             )
-//                           ],
-//                         ),
-//                       ),
-//                     ),
-//                   );
-//                 }
-//               ),
-//             )
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+                  },
+                  child: Text(
+                    'View All',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Theme.of(context).colorScheme.outline,
+                      fontWeight: FontWeight.w400
+                    ),
+                  ),
+                )
+              ],
+            ),
+            const SizedBox(height: 20),
+            Expanded(
+              child: ListView.builder(
+                itemCount: transactionsData.length,
+                itemBuilder: (context, int i) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 16.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    Container(
+                                      width: 50,
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                      color: transactionsData[i]['color'],
+                                      shape: BoxShape.circle
+                                      ),
+                                    ),
+                                    transactionsData[i]['icon'] 
+                                  ],
+                                ),
+                                const SizedBox(width: 12),
+                                Text(
+                                  transactionsData[i]['name'],
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Theme.of(context).colorScheme.onBackground,
+                                    fontWeight: FontWeight.w500
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  transactionsData[i]['totalAmount'],
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Theme.of(context).colorScheme.onBackground,
+                                    fontWeight: FontWeight.w400
+                                  ),
+                                ),
+                                Text(
+                                  transactionsData[i]['date'],
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Theme.of(context).colorScheme.outline,
+                                    fontWeight: FontWeight.w400
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                }
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+

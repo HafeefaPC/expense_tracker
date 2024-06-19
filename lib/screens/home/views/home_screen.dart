@@ -1,35 +1,53 @@
-
 import 'package:expensetracker/screens/home/views/main_screen.dart';
+import 'package:expensetracker/screens/stats/stats.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'main_screen.dart';
+import 'package:flutter/widgets.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int index = 0;
+  late Color selectedItem = Colors.blue;
+  Color unselectedItem = Colors.grey;
+
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBar(),
       bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.vertical(
+        borderRadius:const  BorderRadius.vertical(
           top: Radius.circular(30),
         ),
         child: BottomNavigationBar(
-        backgroundColor: Colors.white,
+          onTap:(value) {
+            setState(() {
+              index =value;
+            });
+          },
+        
         showSelectedLabels: false,
         showUnselectedLabels: false,
         elevation: 3,
-        items: const[
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.home),
+            icon: Icon(CupertinoIcons.home,
+                        color: index ==0 ? selectedItem:unselectedItem
+                        ),
             label: 'Home',  
           ),
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.graph_square_fill),
+            icon: Icon(CupertinoIcons.graph_square_fill,
+                         color: index ==1 ? selectedItem:unselectedItem),
             label: 'stats', 
           ),
-        
         ],
       ),
     ),
@@ -52,7 +70,7 @@ class HomeScreen extends StatelessWidget {
     )
     )
     ),
-  body:  const MainScreen(),
+  body: index==0?MainScreen():StatScreen(),
     );
   }
 }
