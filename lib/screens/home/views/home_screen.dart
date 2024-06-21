@@ -1,3 +1,4 @@
+import 'package:expensetracker/screens/add_expense/views/add_expense.dart';
 import 'package:expensetracker/screens/home/views/main_screen.dart';
 import 'package:expensetracker/screens/stats/stats.dart';
 import 'package:flutter/cupertino.dart';
@@ -52,7 +53,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     ),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-    floatingActionButton:FloatingActionButton(onPressed: (){},
+    floatingActionButton:FloatingActionButton(onPressed: (){
+      Navigator.push(context,MaterialPageRoute(builder: (context)=> const AddExpense()));
+    },
     shape: const CircleBorder(),
     child:Container(
       width:60,
