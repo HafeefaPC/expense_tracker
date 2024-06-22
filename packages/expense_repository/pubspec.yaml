@@ -13,8 +13,7 @@ dependencies:
   firebase_auth: ^5.1.0 
   cloud_firestore: ^5.0.1
   # rxdart: ^0.28.0
-expense_repository:
-    path: packages/expense_repository  
+
   
 
 dev_dependencies:

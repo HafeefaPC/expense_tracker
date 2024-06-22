@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+
 import 'chart.dart';
 
 class StatScreen extends StatelessWidget {
@@ -39,4 +40,3 @@ class StatScreen extends StatelessWidget {
     );
   }
 }
-

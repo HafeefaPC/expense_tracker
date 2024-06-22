@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:expense_repository/expense_repository.dart';
 
-
 part 'create_category_event.dart';
 part 'create_category_state.dart';
 
